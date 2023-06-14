@@ -1,0 +1,34 @@
+{% extends 'base.html' %} 
+
+{% block title %}Boggle{% endblock %} 
+
+{% block content %} 
+<h1>Welcome to Boggle!</h1>
+<h2>To play the game, create a word from the letters on the board and submit it in the box below. Any word you 
+    submit must be both a valid word and must be arranged from adjacent letters (must be above, below, left, 
+    right or diagonal the current letter) without reusing any of the letters. The longer the word, the higher the score. 
+</h2>
+<div class="game-board">
+    <tbody>
+        {% for board in gameboard %}
+        <tr>
+            {% for b in board %} 
+            <td>{{ b }}</td>
+            {% endfor %} 
+        </tr>
+        <br>
+        {% endfor %} 
+    </tbody>
+</div>
+<!--action="/game/handle"-->
+<form action="/game/handle">
+    <input type="text" placeholder="Enter word here">
+    <button class="subgame">Submit</button>
+</form>
+<div class="response-box">
+</div>
+<div class="stat-box">
+    <p class="score">0</p>
+    <p class="timer">60 seconds</p>
+</div>
+{% endblock %}
